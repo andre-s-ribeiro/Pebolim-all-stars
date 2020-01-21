@@ -1,0 +1,7 @@
+{
+  "name": "Pebolim-all-stars",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

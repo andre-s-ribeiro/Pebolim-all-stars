@@ -6,7 +6,11 @@ const routes: Routes = [
   {
     path: '',
     component: TelaInicialComponent
+  },  {
+    path: 'tela-inicial-teste',
+    loadChildren: () => import('./tela-inicial-teste/tela-inicial-teste.module').then( m => m.TelaInicialTestePageModule)
   }
+
 ];
 @NgModule({
   imports: [

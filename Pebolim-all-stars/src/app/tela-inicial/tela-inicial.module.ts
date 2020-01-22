@@ -1,13 +1,15 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TelaInicialComponent } from './tela-inicial.component';
+import { IonicModule } from '@ionic/angular';
 
 @NgModule({
   declarations: [
     TelaInicialComponent
   ],
   imports: [
-    CommonModule    
+    CommonModule,
+    IonicModule 
   ],
   exports: [
     TelaInicialComponent

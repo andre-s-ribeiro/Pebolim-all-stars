@@ -17,4 +17,8 @@ export class TelaInicioPage implements OnInit {
     this.router.navigate(['placar'])
   }
 
+  goToClassificacao(){
+    this.router.navigate(['classificacao'])
+  }
+  
 }

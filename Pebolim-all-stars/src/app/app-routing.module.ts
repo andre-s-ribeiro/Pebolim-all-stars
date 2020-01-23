@@ -13,7 +13,11 @@ const routes: Routes = [
   {
     path: 'placar',
     loadChildren: () => import('./placar/placar.module').then( m => m.PlacarPageModule)
+  },  {
+    path: 'classificacao',
+    loadChildren: () => import('./classificacao/classificacao.module').then( m => m.ClassificacaoPageModule)
   }
+
 
 ];
 @NgModule({

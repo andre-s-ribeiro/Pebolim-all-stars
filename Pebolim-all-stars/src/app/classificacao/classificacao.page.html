@@ -1,0 +1,49 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Classificação</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+  <ion-list>
+    <ion-item>
+      <ion-avatar slot="start" class="ios hydrated">
+        <img src="https://scontent.fudi1-2.fna.fbcdn.net/v/t1.0-9/p720x720/48385684_106059803782895_1613349781218787328_o.jpg?_nc_cat=100&_nc_ohc=VLYzKt1dr1QAX86eBoK&_nc_ht=scontent.fudi1-2.fna&_nc_tp=1002&oh=caf4babc691d4c2bbcf5cfe079cba807&oe=5ED1E076" alt="foto perfil">
+      </ion-avatar>
+      <ion-label>
+        <h2>Vitor Yan</h2>
+        <p>Atacante</p>
+        <p>118 pts</p>
+      </ion-label>      
+    </ion-item>
+
+    <ion-item>
+      <ion-avatar slot="start" class="ios hydrated">
+        <img src="./../../assets/times/bomba.png" alt="foto perfil">
+      </ion-avatar>
+      <ion-label>
+        <h2>Bombeiros 118 pts</h2>
+        <p>Vitor Yan (atacante)</p>
+        <p>André Romarinho (defensor)</p>
+      </ion-label>      
+    </ion-item>
+
+    <ion-item>
+      <ion-avatar slot="start" class="ios hydrated">
+        <img src="./../../assets/times/dragao.jpg" alt="foto perfil">
+      </ion-avatar>
+      <ion-label>
+        <h2>Dragoes Loucos 118 pts</h2>
+        <p>Ediclecio (Atacante)</p>
+        <p>Guilherme Genofre (defensor)</p>
+      </ion-label>      
+    </ion-item>
+    
+  </ion-list>
+</ion-content>

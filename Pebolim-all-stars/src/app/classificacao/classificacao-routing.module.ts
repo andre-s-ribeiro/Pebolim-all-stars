@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { TelaInicialTestePage } from './tela-inicial-teste.page';
+import { ClassificacaoPage } from './classificacao.page';
 
 const routes: Routes = [
   {
     path: '',
-    component: TelaInicialTestePage
+    component: ClassificacaoPage
   }
 ];
 
@@ -14,4 +14,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class TelaInicialTestePageRoutingModule {}
+export class ClassificacaoPageRoutingModule {}

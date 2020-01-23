@@ -1,14 +1,14 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
-import { TelaInicialComponent } from './tela-inicial/tela-inicial.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: TelaInicialComponent
-  },  {
-    path: 'tela-inicial-teste',
-    loadChildren: () => import('./tela-inicial-teste/tela-inicial-teste.module').then( m => m.TelaInicialTestePageModule)
+    loadChildren: () => import('./tela-inicio/tela-inicio.module').then( m => m.TelaInicioPageModule)
+  },
+  {
+    path: 'tela-inicio',
+    loadChildren: () => import('./tela-inicio/tela-inicio.module').then( m => m.TelaInicioPageModule)
   },
   {
     path: 'placar',

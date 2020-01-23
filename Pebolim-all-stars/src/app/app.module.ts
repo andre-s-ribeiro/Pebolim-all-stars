@@ -8,7 +8,6 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { TelaInicialModule } from './tela-inicial/tela-inicial.module';
 import { SharedModule } from './shared/shared.module';
 
 @NgModule({
@@ -18,7 +17,6 @@ import { SharedModule } from './shared/shared.module';
     BrowserModule,
     IonicModule.forRoot(),
     AppRoutingModule,
-    TelaInicialModule,
     SharedModule
   ],
   providers: [

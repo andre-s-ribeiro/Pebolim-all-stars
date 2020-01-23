@@ -1,16 +1,62 @@
 .left-col {
+  position: relative;
   width: 50%;
   min-height: 415px;
   border-right: 15px solid black;
   float: left;
   box-sizing: border-box;
-  background-color: red;
+  background-color: #b71c1c;
 }
 
 .right-col {
   width: 50%;
   min-height: 415px;
   float: right;
-  background-color: blue;
-  border-left: 10px solid black;
+  background-color: #1a237e;
+  border-left: 16px solid black;
+}
+
+.arrow {
+  font-size: 3rem;
+}
+.options {
+  font-size: 1.5rem;
+}
+.fab-btn-up-lefSide {
+  margin-top: -28%;
+  margin-left: 16%;
+}
+.fab-btn-down-lefSide {
+  margin-top: 37%;
+  margin-left: 15%;
+}
+.fab-btn-up-rightSide {
+  margin-top: 7%;
+  margin-left: 31%;
+}
+.fab-btn-down-rightSide {
+  margin-top: 38%;
+  margin-left: 30.8%;
+}
+.leftCounter {
+  position: relative;
+  margin-top: -3rem;
+  left: 11%;
+  font-size: 10rem;
+  color: white;
+}
+
+.rightCounter {
+  font-size: 10rem;
+  position: relative;
+  margin-top: 6.3rem;
+  right: -60%;
+  color: white;
+}
+.time {
+  position: relative;
+  font-size: 6rem;
+  top: -3%;
+  right: -70%;
+  color: white;
 }

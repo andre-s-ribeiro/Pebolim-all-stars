@@ -1,9 +1,62 @@
 <ion-content>
   <div class='page'>
     <div class='left-col'>
+      <h1 class="time">03:00</h1>
+      <div class="configDiv">
+        <ion-fab class="fab-btn-play" slot="fixed">
+          <ion-fab-button color="light" size="small">
+            <ion-icon class="options" name="md-arrow-dropright-circle"></ion-icon>
+          </ion-fab-button>
+        </ion-fab>
+        <ion-fab class="fab-btn-pause" slot="fixed">
+          <ion-fab-button color="light" size="small">
+            <ion-icon class="options" name="md-pause"></ion-icon>
+          </ion-fab-button>
+        </ion-fab>
+        <ion-fab class="fab-btn-config" slot="fixed">
+          <ion-fab-button color="light" size="small">
+            <ion-icon class="options" name="md-settings"></ion-icon>
+          </ion-fab-button>
+        </ion-fab>
+        <ion-fab class="fab-btn-refresh" slot="fixed">
+          <ion-fab-button color="light" size="small">
+            <ion-icon class="options" name="md-repeat"></ion-icon>
+          </ion-fab-button>
+        </ion-fab>
+      </div>
+      <div class="plus">
+        <ion-fab class="fab-btn-up-lefSide" slot="fixed">
+          <ion-fab-button color="light" size="small">
+            <ion-icon class="arrow" name="md-arrow-dropup"></ion-icon>
+          </ion-fab-button>
+        </ion-fab>
+      </div>
 
+      <div class="less">
+        <ion-fab class="fab-btn-down-lefSide" slot="fixed">
+          <ion-fab-button color="light" size="small">
+            <ion-icon class="arrow" name="md-arrow-dropdown"></ion-icon>
+          </ion-fab-button>
+        </ion-fab>
+      </div>
+      <h1 class="leftCounter">0</h1>
     </div>
     <div class='right-col'>
+      <div class="plus">
+        <ion-fab class="fab-btn-up-rightSide" slot="fixed">
+          <ion-fab-button color="light" size="small">
+            <ion-icon class="arrow" name="md-arrow-dropup"></ion-icon>
+          </ion-fab-button>
+        </ion-fab>
+      </div>
+      <div class="less">
+        <ion-fab class="fab-btn-down-rightSide" slot="fixed">
+          <ion-fab-button color="light" size="small">
+            <ion-icon class="arrow" name="md-arrow-dropdown"></ion-icon>
+          </ion-fab-button>
+        </ion-fab>
+      </div>
+      <h1 class="rightCounter">0</h1>
     </div>
   </div>
 </ion-content>

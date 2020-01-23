@@ -1,0 +1,16 @@
+.left-col {
+  width: 50%;
+  min-height: 415px;
+  border-right: 15px solid black;
+  float: left;
+  box-sizing: border-box;
+  background-color: red;
+}
+
+.right-col {
+  width: 50%;
+  min-height: 415px;
+  float: right;
+  background-color: blue;
+  border-left: 10px solid black;
+}

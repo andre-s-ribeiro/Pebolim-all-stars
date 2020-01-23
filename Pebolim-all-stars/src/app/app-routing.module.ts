@@ -9,6 +9,10 @@ const routes: Routes = [
   },  {
     path: 'tela-inicial-teste',
     loadChildren: () => import('./tela-inicial-teste/tela-inicial-teste.module').then( m => m.TelaInicialTestePageModule)
+  },
+  {
+    path: 'placar',
+    loadChildren: () => import('./placar/placar.module').then( m => m.PlacarPageModule)
   }
 
 ];

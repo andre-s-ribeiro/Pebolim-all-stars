@@ -1,7 +1,8 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { interval, Subscription } from 'rxjs';
-import { map , filter} from 'rxjs/operators';
+import { map, filter } from 'rxjs/operators';
 import { ModalController } from '@ionic/angular';
+import { PlacarModalContentComponent } from '../placar-modal-content/placar-modal-content.component';
 
 
 
@@ -11,10 +12,10 @@ import { ModalController } from '@ionic/angular';
   templateUrl: './placar.page.html',
   styleUrls: ['./placar.page.scss'],
 })
-export class PlacarPage implements OnInit , OnDestroy {
+export class PlacarPage implements OnInit, OnDestroy {
   redPts: number = 0;
   bluePts: number = 0;
-  isPaused: boolean = false;
+  isPlaying: boolean = false;
   whoIsWinning: string = '';
   countDownSubscription: Subscription;
   countdownStart: number = 3000;
@@ -25,42 +26,43 @@ export class PlacarPage implements OnInit , OnDestroy {
 
   ngOnInit() {
     this.countdownStart = 3 * 60000;
-
-   
-  
-    
   }
   play() {
-    this.isPaused = true;
+    this.isPlaying = true;
     this.countDownSubscription = interval(1000).pipe(
-      map(i =>  this.countdownStart  - 1000),
-      filter(i => i >= 0 )
+      map(() => this.countdownStart - 1000),
+      filter(i => i >= 0)
     ).subscribe(x => {
       this.countdownStart = x
     })
   }
   pause() {
-    this.isPaused = false;
+    this.isPlaying = false;
     this.countDownSubscription.unsubscribe();
+  }
+  refresh() {
+    this.countdownStart = 3 * 60000;
+    this.redPts = 0;
+    this.bluePts = 0;
   }
   plusRedTeam() {
     this.redPts++;
-    this.win();
+    this.checkWhosWhinnig();
   }
   lessRedTeam() {
     this.redPts--;
-    this.win();
+    this.checkWhosWhinnig();
   }
   plusBlueTeam() {
     this.bluePts++;
-    this.win();
+    this.checkWhosWhinnig();
   }
   lessBlueTeam() {
     this.bluePts--;
-    this.win();
+    this.checkWhosWhinnig();
   }
 
-  win() {
+  checkWhosWhinnig() {
     if (this.bluePts > this.redPts) {
       this.whoIsWinning = 'blue';
     }
@@ -72,7 +74,16 @@ export class PlacarPage implements OnInit , OnDestroy {
     }
   }
 
-  ngOnDestroy(){
-    this.countDownSubscription.unsubscribe();
+  ngOnDestroy() {
+    if (this.isPlaying) {
+      this.countDownSubscription.unsubscribe();
+    }
+  }
+
+  async presentModal() {
+    const modal = await this.modalController.create({
+      component: PlacarModalContentComponent
+    });
+    return await modal.present();
   }
 }

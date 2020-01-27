@@ -9,10 +9,14 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SharedModule } from './shared/shared.module';
+import { PlacarModalContentComponent } from './placar-modal-content/placar-modal-content.component';
 
 @NgModule({
-  declarations: [AppComponent],
-  entryComponents: [],
+  declarations: [
+    AppComponent,
+    PlacarModalContentComponent
+  ],
+  entryComponents: [PlacarModalContentComponent],
   imports: [
     BrowserModule,
     IonicModule.forRoot(),

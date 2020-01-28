@@ -20,5 +20,9 @@ export class TelaInicioPage implements OnInit {
   goToClassificacao(){
     this.router.navigate(['classificacao'])
   }
+
+  goToRegras(){
+    this.router.navigate(['regras'])
+  }
   
 }

@@ -16,6 +16,10 @@ const routes: Routes = [
   },  {
     path: 'classificacao',
     loadChildren: () => import('./classificacao/classificacao.module').then( m => m.ClassificacaoPageModule)
+  },
+  {
+    path: 'regras',
+    loadChildren: () => import('./regras/regras.module').then( m => m.RegrasPageModule)
   }
 
 

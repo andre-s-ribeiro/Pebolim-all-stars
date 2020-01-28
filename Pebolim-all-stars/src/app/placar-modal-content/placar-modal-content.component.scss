@@ -2,10 +2,11 @@
   padding-right: 10rem;
   padding-left: 10rem;
   padding-top: 2rem;
+  overflow: auto;
 }
 
 main {
-  background-color: green;
+  background-color: blueviolet;
   height: 100%;
 }
 .closeModal {
@@ -13,5 +14,12 @@ main {
   position: absolute;
   right: 1%;
 }
-ion-item {
+
+ion-button, ion-item{
+  margin-bottom: 2rem;
+}
+ion-item{
+  margin-top: 5rem;
+  --ion-background-color: blueviolet;
+  color: white;
 }

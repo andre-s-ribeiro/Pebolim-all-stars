@@ -3,23 +3,23 @@
     <div class='left-col' [ngClass]="{redIsWinning: whoIsWinning == 'red'}">
       <h1 class="time">{{ countdownStart | date:'mm:ss':'UTC'}}</h1>
       <div class="configDiv">
-        <ion-fab *ngIf="!isPaused" class="fab-btn-play " slot="fixed">
+        <ion-fab *ngIf="!isPlaying" class="fab-btn-play " slot="fixed">
           <ion-fab-button (click)="play()" color="light" size="small">
             <ion-icon class="options" name="md-arrow-dropright-circle"></ion-icon>
           </ion-fab-button>
         </ion-fab>
-        <ion-fab *ngIf="isPaused" class="fab-btn-pause " slot="fixed">
+        <ion-fab *ngIf="isPlaying" class="fab-btn-pause " slot="fixed">
           <ion-fab-button (click)="pause()" color="light" size="small">
             <ion-icon class="options" name="md-pause"></ion-icon>
           </ion-fab-button>
         </ion-fab>
-        <ion-fab *ngIf="!isPaused" class="fab-btn-config " slot="fixed">
-          <ion-fab-button color="light" size="small">
+        <ion-fab *ngIf="!isPlaying" class="fab-btn-config " slot="fixed">
+          <ion-fab-button (click)="presentModal()" color="light" size="small">
             <ion-icon class="options" name="md-settings"></ion-icon>
           </ion-fab-button>
         </ion-fab>
-        <ion-fab *ngIf="!isPaused" class="fab-btn-refresh " slot="fixed">
-          <ion-fab-button color="light" size="small">
+        <ion-fab *ngIf="!isPlaying" class="fab-btn-refresh " slot="fixed">
+          <ion-fab-button (click)="refresh()" color="light" size="small">
             <ion-icon class="options" name="md-repeat"></ion-icon>
           </ion-fab-button>
         </ion-fab>
@@ -31,7 +31,7 @@
           </ion-fab-button>
         </ion-fab>
       </div>
-
+   
       <div class="less" >
         <ion-fab class="fab-btn-down-lefSide" slot="fixed">
           <ion-fab-button (click)="lessRedTeam()"  [disabled]="redPts <= 0" color="light" size="small">

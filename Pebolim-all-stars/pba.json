@@ -1,0 +1,37 @@
+{
+    "ranking-pessoal":[
+        {
+            "id":1,
+            "nome":"Vitor Yan",
+            "posicao":"Ataque",
+            "pontuacao":8,
+            "foto":"https://scontent.fudi1-2.fna.fbcdn.net/v/t1.0-9/p720x720/48385684_106059803782895_1613349781218787328_o.jpg?_nc_cat=100&_nc_ohc=VLYzKt1dr1QAX86eBoK&_nc_ht=scontent.fudi1-2.fna&_nc_tp=1002&oh=caf4babc691d4c2bbcf5cfe079cba807&oe=5ED1E076"
+        }
+    ],
+    "ranking-times":[
+        {
+            "id":1,
+            "nome":"Shazam",         
+            "pontuacao":8,
+            "foto":"./../../assets/times/dragao.jpg",
+            "atacante":"Vitor Yan",
+            "defensor":"Ediclecio"
+        },
+        {
+            "id":2,
+            "nome":"Doidera",         
+            "pontuacao":2,
+            "foto":"./../../assets/times/bomba.png",
+            "atacante":"Leozika",
+            "defensor":"genofre"
+        },
+        {
+            "id":3,
+            "nome":"vitao",         
+            "pontuacao":10,
+            "foto":"./../../assets/times/bomba.png",
+            "atacante":"sadsadasdas",
+            "defensor":"masmasmas"
+        }
+    ]
+}

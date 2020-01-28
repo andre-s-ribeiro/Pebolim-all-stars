@@ -1,9 +1,10 @@
 <ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-back-button defaultHref="home"></ion-back-button>
+      <ion-back-button defaultHref="tela-inicio"></ion-back-button>
     </ion-buttons>
     <ion-title>Classificação</ion-title>
+    <ion-button size="small" [color]="color" (click)="trocaLista()">{{ opcao }}</ion-button>
   </ion-toolbar>
 </ion-header>
 
@@ -11,16 +12,37 @@
   <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
     <ion-refresher-content></ion-refresher-content>
   </ion-refresher>
-  <ion-list>
-    <ion-item *ngFor="let time of dataTimes">
-      <ion-avatar slot="start" class="ios hydrated">
-        <img [src]="time.foto">
-      </ion-avatar>
-      <ion-label>
-        <h2>{{ time.nome }} ({{ time.pontuacao }} pontos)</h2>
-        <p>{{ time.atacante }}</p>
-        <p>{{ time.defensor }}</p>
-      </ion-label>      
-    </ion-item>    
-  </ion-list>
+  <div *ngIf="dataTimes || dataJogadores; else conectionError">
+    <ion-list *ngIf="lista == 'times'; else individual">
+      <ion-item *ngFor="let time of dataTimes">
+        <ion-avatar slot="start" class="ios hydrated">
+          <img [src]="time.foto">
+        </ion-avatar>
+        <ion-label>
+          <h2>{{ time.nome }} ({{ time.pontuacao }} pontos)</h2>
+          <p>{{ time.atacante }} (atacante)</p>
+          <p>{{ time.defensor }} (defensor)</p>
+        </ion-label>      
+      </ion-item>    
+    </ion-list>
+    <ng-template #individual>
+      <ion-list>
+        <ion-item *ngFor="let jogador of dataJogadores">
+          <ion-avatar slot="start" class="ios hydrated">
+            <img [src]="jogador.foto">
+          </ion-avatar>
+          <ion-label>
+            <h2>{{ jogador.nome }} ({{ jogador.pontuacao }} pontos)</h2>
+            <p>{{ jogador.posicao }}</p>            
+          </ion-label>      
+        </ion-item>    
+      </ion-list>
+    </ng-template>
+  </div>
+  <ng-template #conectionError>
+    <div class="margin">
+      <ion-icon name="construct"></ion-icon>
+      <h2>Ocorreu um erro com a conexão tente novamente mais tarde.</h2>
+    </div>
+  </ng-template>
 </ion-content>

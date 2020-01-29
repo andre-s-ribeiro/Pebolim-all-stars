@@ -20,6 +20,10 @@
     display: block;
 }
 
+ion-slides {
+    padding-bottom: 1rem;
+    --bullet-background: red; 
+}
 ion-slide > h2 {
     margin-top: 2.8rem;
 }

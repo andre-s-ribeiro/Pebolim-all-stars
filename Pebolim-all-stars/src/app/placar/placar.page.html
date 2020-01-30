@@ -1,7 +1,10 @@
 <ion-content>
   <div class='page'>
     <div class="timer">
-      <h1 class="time">{{ countdownStart | date:'mm:ss':'UTC'}}</h1>      
+      <h1 class="time" *ngIf="infinity == false; else infinito">{{ countdownStart | date:'mm:ss':'UTC'}}</h1>      
+      <ng-template #infinito>
+        <h1 class="time infinito">∞</h1>
+      </ng-template>
     </div>
     <div class="configDiv">
       <ion-fab *ngIf="!isPlaying" class="fab-btn-play " slot="fixed">

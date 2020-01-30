@@ -22,7 +22,7 @@ export class PlacarPage implements OnInit, OnDestroy {
   countdownStart: number = 3000;
   tempoLimite: number;
   pontosLimite: number;
-
+  infinity: boolean = false;
   constructor(
     public modalController: ModalController
   ) { }
@@ -92,7 +92,8 @@ export class PlacarPage implements OnInit, OnDestroy {
     modal.onDidDismiss()
       .then((data) => {
         this.tempoLimite = data.data['minutos']; // Here's your selected user!
-        this.pontosLimite = data.data['pontos'];    
+        this.pontosLimite = data.data['pontos'];  
+        this.infinity = data.data['infinity'];  
         if (this.tempoLimite || this.pontosLimite) {
           this.ngOnInit();
         }

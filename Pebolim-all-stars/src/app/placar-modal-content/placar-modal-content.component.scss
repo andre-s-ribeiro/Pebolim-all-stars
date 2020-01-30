@@ -1,25 +1,33 @@
 .content {
-  padding-right: 10rem;
-  padding-left: 10rem;
-  padding-top: 2rem;
-  overflow: auto;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+	align-items: center;
 }
 
 main {
   background-color: blueviolet;
   height: 100%;
+  overflow: auto;
 }
 .closeModal {
+  float: right;
   font-size: 3rem;
-  position: absolute;
-  right: 1%;
 }
 
-ion-button, ion-item{
-  margin-bottom: 2rem;
+.btns {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  margin-right: 0.3rem;
 }
+
+
 ion-item{
   margin-top: 5rem;
   --ion-background-color: blueviolet;
   color: white;
+  margin-bottom: 2rem;
+  width: 60%;
 }

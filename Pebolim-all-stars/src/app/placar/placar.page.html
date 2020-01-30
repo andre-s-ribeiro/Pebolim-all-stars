@@ -28,7 +28,7 @@
     <div class='left-col' [ngClass]="{redIsWinning: whoIsWinning == 'red'}">
       <div class="plus" >
         <ion-fab class="fab-btn-up-lefSide" slot="fixed">
-          <ion-fab-button (click)="plusRedTeam()" [disabled]="redPts >= 99" color="light" size="small">
+          <ion-fab-button (click)="plusRedTeam()" [disabled]="redPts >= pontosLimite" color="light" size="small">
             <ion-icon class="arrow" name="md-arrow-dropup"></ion-icon>
           </ion-fab-button>
         </ion-fab>
@@ -46,7 +46,7 @@
     <div class='right-col' [ngClass]="{blueIsWinning: whoIsWinning == 'blue'}">
       <div class="plus" >
         <ion-fab class="fab-btn-up-rightSide" slot="fixed">
-          <ion-fab-button (click)="plusBlueTeam()" [disabled]="bluePts >= 99" color="light" size="small">
+          <ion-fab-button (click)="plusBlueTeam()" [disabled]="bluePts >= pontosLimite" color="light" size="small">
             <ion-icon class="arrow" name="md-arrow-dropup"></ion-icon>
           </ion-fab-button>
         </ion-fab>

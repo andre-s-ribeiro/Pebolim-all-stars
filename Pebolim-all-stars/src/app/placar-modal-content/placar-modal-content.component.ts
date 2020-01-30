@@ -12,6 +12,8 @@ export class PlacarModalContentComponent implements OnInit {
   secondOption: string = 'limite de pontos';
   tempoLimite: boolean = false;
   pontosLimite: boolean = false;
+  date: Date;
+  pontuacao: number;
   constructor(
     private router: Router,
     private modalCtrl: ModalController
@@ -43,5 +45,32 @@ export class PlacarModalContentComponent implements OnInit {
       this.tempoLimite = false;
       this.pontosLimite = true;
     }
+  }
+
+  getMinutos($event){
+    this.date = new Date($event.detail.value);
+  }
+
+  getPontos($event){
+    let date = new Date($event.detail.value);
+    this.pontuacao = date.getMinutes();
+  }
+
+  salvar(){
+    if(this.date && this.pontuacao){
+      this.modalCtrl.dismiss({
+        'minutos': this.date.getMinutes(),
+        'pontos': this.pontuacao
+      });
+    }else if(this.pontuacao){
+      this.modalCtrl.dismiss({
+        'pontos': this.pontuacao
+      });
+    }else{
+      this.modalCtrl.dismiss({
+        'minutos': this.date.getMinutes(),
+      });
+    }
+   
   }
 }

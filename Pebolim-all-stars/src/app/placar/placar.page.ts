@@ -1,8 +1,9 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, OnChanges } from '@angular/core';
 import { interval, Subscription } from 'rxjs';
 import { map, filter } from 'rxjs/operators';
 import { ModalController } from '@ionic/angular';
 import { PlacarModalContentComponent } from '../placar-modal-content/placar-modal-content.component';
+
 
 
 
@@ -19,13 +20,17 @@ export class PlacarPage implements OnInit, OnDestroy {
   whoIsWinning: string = '';
   countDownSubscription: Subscription;
   countdownStart: number = 3000;
+  tempoLimite: number;
+  pontosLimite: number;
 
   constructor(
     public modalController: ModalController
   ) { }
-
+  
   ngOnInit() {
-    this.countdownStart = 3 * 60000;
+    this.checarLimitacoes();
+    this.redPts = 0;
+    this.bluePts = 0;
   }
   play() {
     this.isPlaying = true;
@@ -41,7 +46,7 @@ export class PlacarPage implements OnInit, OnDestroy {
     this.countDownSubscription.unsubscribe();
   }
   refresh() {
-    this.countdownStart = 3 * 60000;
+    this.checarLimitacoes();
     this.redPts = 0;
     this.bluePts = 0;
   }
@@ -84,6 +89,27 @@ export class PlacarPage implements OnInit, OnDestroy {
     const modal = await this.modalController.create({
       component: PlacarModalContentComponent
     });
+    modal.onDidDismiss()
+      .then((data) => {
+        this.tempoLimite = data.data['minutos']; // Here's your selected user!
+        this.pontosLimite = data.data['pontos'];    
+        if (this.tempoLimite || this.pontosLimite) {
+          this.ngOnInit();
+        }
+      });
+
     return await modal.present();
+
+  }
+
+  checarLimitacoes() {
+    if (this.tempoLimite) {
+      this.countdownStart = this.tempoLimite * 60000;
+    } else {
+      this.countdownStart = 3 * 60000;
+    }
+    if (!this.pontosLimite) {
+      this.pontosLimite = 99;
+    } 
   }
 }

@@ -1,6 +1,8 @@
 <main>
  
-  <ion-icon (click)="dismiss()" class="closeModal" name="close"></ion-icon>
+  <div class="closeModal">
+    <ion-icon (click)="dismiss()" class="closeModalIcon" name="close"></ion-icon>
+  </div>
   <div class="content">
  
     <ion-item >
@@ -11,14 +13,17 @@
       </ion-select>
     </ion-item>
     <ion-item *ngIf="tempoLimite">
-      <ion-label>Quantos minutos vai querer?</ion-label>
-      <ion-datetime color="danger" displayFormat="mm"></ion-datetime>
+      <ion-label>Qual será o tempo (em minutos) limite?</ion-label>
+      <ion-datetime (ionChange)="getMinutos($event)" color="danger" displayFormat="mm"></ion-datetime>
     </ion-item>
     <ion-item *ngIf="pontosLimite">
-      <ion-label>Quantos pontos irá querer?</ion-label>
-      <ion-datetime color="danger" displayFormat="mm"></ion-datetime>
+      <ion-label>Qual será a pontuação limte?</ion-label>
+      <ion-datetime (ionChange)="getPontos($event)" color="danger" displayFormat="mm"></ion-datetime>
     </ion-item>
-    <ion-button (click)="sair()" color="danger" expand="block">Sair</ion-button>
   </div>
-
+  <div class="btns">
+    <ion-button class="salvarBtn" (click)="salvar()"  color="primary" size="small">Salvar alterações</ion-button>
+    <ion-button class="sairBtn" (click)="sair()" color="danger" size="small">Sair</ion-button>
+  </div>
+  
 </main>

@@ -20,6 +20,10 @@ const routes: Routes = [
   {
     path: 'regras',
     loadChildren: () => import('./regras/regras.module').then( m => m.RegrasPageModule)
+  },
+  {
+    path: 'videos',
+    loadChildren: () => import('./videos/videos.module').then( m => m.VideosPageModule)
   }
 
 

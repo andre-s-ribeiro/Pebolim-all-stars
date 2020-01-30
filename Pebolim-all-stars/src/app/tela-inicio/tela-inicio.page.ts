@@ -24,5 +24,9 @@ export class TelaInicioPage implements OnInit {
   goToRegras(){
     this.router.navigate(['regras'])
   }
+
+  goToVideos(){
+    this.router.navigate(['videos'])
+  }
   
 }

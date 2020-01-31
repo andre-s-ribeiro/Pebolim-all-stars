@@ -5,18 +5,18 @@
   </div>
   <div class="content">
  
-    <ion-item >
+    <ion-item class="twoOptions">
       <ion-label>Limitações</ion-label>
       <ion-select multiple="true" (ionChange)="onChange($event)">
         <ion-select-option [selected]="optionOne" [value]="firstOption" selected>limite de tempo</ion-select-option>
         <ion-select-option [selected]="optionTwo" [value]="secondOption">limte de pontos</ion-select-option>
       </ion-select>
     </ion-item>
-    <ion-item *ngIf="tempoLimite">
+    <ion-item *ngIf="tempoLimite" class="tempoOption">
       <ion-label>Qual será o tempo (em minutos) limite?</ion-label>
       <ion-datetime (ionChange)="getMinutos($event)" color="danger" displayFormat="mm"></ion-datetime>
     </ion-item>
-    <ion-item *ngIf="pontosLimite">
+    <ion-item *ngIf="pontosLimite" class="pontosOption">
       <ion-label>Qual será a pontuação limte?</ion-label>
       <ion-datetime (ionChange)="getPontos($event)" color="danger" displayFormat="mm"></ion-datetime>
     </ion-item>

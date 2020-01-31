@@ -3,7 +3,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-	align-items: center;
+  align-items: center;
 }
 
 main {
@@ -22,10 +22,11 @@ main {
   justify-content: flex-end;
   margin-right: 0.3rem;
 }
-
-
-ion-item{
+.twoOptions {
   margin-top: 5rem;
+}
+
+.twoOptions, .tempoOption, .pontosOption{
   --ion-background-color: blueviolet;
   color: white;
   margin-bottom: 2rem;

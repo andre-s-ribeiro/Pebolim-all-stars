@@ -8,8 +8,8 @@ import { ModalController } from '@ionic/angular';
   styleUrls: ['./placar-modal-content.component.scss'],
 })
 export class PlacarModalContentComponent implements OnInit {
-  firstOption: boolean;
-  secondOption: boolean;
+  firstOption: string = 'limite de tempo';
+  secondOption: string = 'limte de pontos';
   tempoLimite: boolean = false;
   pontosLimite: boolean = false;
   date: Date;
@@ -68,7 +68,7 @@ export class PlacarModalContentComponent implements OnInit {
         'pontos': this.pontuacao,
         'infinity': true
       });
-    }else{
+    }else {
       this.modalCtrl.dismiss({
         'minutos': this.date.getMinutes(),
         'infinity': false

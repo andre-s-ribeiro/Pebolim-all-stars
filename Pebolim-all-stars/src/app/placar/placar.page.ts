@@ -31,6 +31,7 @@ export class PlacarPage implements OnInit, OnDestroy {
     this.checarLimitacoes();
     this.redPts = 0;
     this.bluePts = 0;
+    
   }
   play() {
     this.isPlaying = true;
@@ -38,8 +39,18 @@ export class PlacarPage implements OnInit, OnDestroy {
       map(() => this.countdownStart - 1000),
       filter(i => i >= 0)
     ).subscribe(x => {
-      this.countdownStart = x
-    })
+      this.countdownStart = x;
+      if(x === 0){
+        if(this.redPts > this.bluePts){
+          console.log('time vermelho ganhou')
+        }else if(this.bluePts > this.redPts){
+          console.log('time azul ganhou')
+        }else{
+          console.log('empatou')
+        }
+      }
+    });
+   
   }
   pause() {
     this.isPlaying = false;
@@ -53,6 +64,7 @@ export class PlacarPage implements OnInit, OnDestroy {
   plusRedTeam() {
     this.redPts++;
     this.checkWhosWhinnig();
+    this.checarQuemGanhou();
   }
   lessRedTeam() {
     this.redPts--;
@@ -61,6 +73,7 @@ export class PlacarPage implements OnInit, OnDestroy {
   plusBlueTeam() {
     this.bluePts++;
     this.checkWhosWhinnig();
+    this.checarQuemGanhou();
   }
   lessBlueTeam() {
     this.bluePts--;
@@ -91,7 +104,7 @@ export class PlacarPage implements OnInit, OnDestroy {
     });
     modal.onDidDismiss()
       .then((data) => {
-        this.tempoLimite = data.data['minutos']; // Here's your selected user!
+        this.tempoLimite = data.data['minutos'];
         this.pontosLimite = data.data['pontos'];  
         this.infinity = data.data['infinity'];  
         if (this.tempoLimite || this.pontosLimite) {
@@ -109,8 +122,13 @@ export class PlacarPage implements OnInit, OnDestroy {
     } else {
       this.countdownStart = 3 * 60000;
     }
-    if (!this.pontosLimite) {
-      this.pontosLimite = 99;
-    } 
+  }
+
+  checarQuemGanhou(){
+    if(this.redPts >= this.pontosLimite && this.isPlaying && this.pontosLimite){
+      console.log('time vermelho ganhou')
+    }else if(this.bluePts >= this.pontosLimite && this.isPlaying && this.pontosLimite ){
+      console.log('time azula ganhou')
+    }
   }
 }

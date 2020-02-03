@@ -23,6 +23,9 @@ export class PlacarPage implements OnInit, OnDestroy {
   tempoLimite: number;
   pontosLimite: number;
   infinity: boolean = false;
+  redWon: boolean = false;
+  blueWon: boolean = false;
+  draw: boolean = false;
   constructor(
     public modalController: ModalController
   ) { }
@@ -42,11 +45,13 @@ export class PlacarPage implements OnInit, OnDestroy {
       this.countdownStart = x;
       if(x === 0){
         if(this.redPts > this.bluePts){
-          console.log('time vermelho ganhou')
+          this.redWon = true;
+          this.isPlaying = false;
         }else if(this.bluePts > this.redPts){
-          console.log('time azul ganhou')
+          this.blueWon = true;
+          this.isPlaying = false;
         }else{
-          console.log('empatou')
+          this.draw = true;
         }
       }
     });
@@ -58,8 +63,13 @@ export class PlacarPage implements OnInit, OnDestroy {
   }
   refresh() {
     this.checarLimitacoes();
+    this.isPlaying = false;
+    this.countDownSubscription.unsubscribe();
     this.redPts = 0;
     this.bluePts = 0;
+    this.draw = false;
+    this.redWon = false;
+    this.blueWon = false;
   }
   plusRedTeam() {
     this.redPts++;
@@ -126,9 +136,13 @@ export class PlacarPage implements OnInit, OnDestroy {
 
   checarQuemGanhou(){
     if(this.redPts >= this.pontosLimite && this.isPlaying && this.pontosLimite){
-      console.log('time vermelho ganhou')
+      this.redWon = true;
+      this.isPlaying = false;
+      this.countDownSubscription.unsubscribe();
     }else if(this.bluePts >= this.pontosLimite && this.isPlaying && this.pontosLimite ){
-      console.log('time azula ganhou')
+      this.blueWon = true;
+      this.isPlaying = false;
+      this.countDownSubscription.unsubscribe();
     }
   }
 }

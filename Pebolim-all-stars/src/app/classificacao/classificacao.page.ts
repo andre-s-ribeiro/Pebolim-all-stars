@@ -1,7 +1,6 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { PlacarService } from '../shared/services/classificacao.service';
 import { Times } from '../shared/model/times.model';
-import { Subscription } from 'rxjs';
 import { Jogador } from '../shared/model/jogador.model';
 
 @Component({
@@ -9,21 +8,19 @@ import { Jogador } from '../shared/model/jogador.model';
   templateUrl: './classificacao.page.html',
   styleUrls: ['./classificacao.page.scss'],
 })
-export class ClassificacaoPage implements OnInit, OnDestroy {
+export class ClassificacaoPage implements OnInit {
 
   constructor(private placarService: PlacarService) { }
   dataTimes: Times[];
   dataJogadores: Jogador[];
   refresher: boolean;
-  // dataSubscription: Subscription;
   lista: String = 'times';
   opcao: String = 'Times';
-  color: String = 'primary'
+  color: String = 'primary';
 
   ngOnInit() {
     this.getTimes();
     this.getJogadores();
-    console.log(this.dataJogadores)
   }
 
   trocaLista() {
@@ -40,20 +37,16 @@ export class ClassificacaoPage implements OnInit, OnDestroy {
   }
 
   getTimes() {
-    this.placarService.getTimes();
+    this.placarService.getTimes().then((data: Times) => {    
+      this.dataTimes = Object.values(data).sort();
+      this.dataTimes.sort((j1, j2) => j1.pontuacao - j2.pontuacao).reverse();
+    });
   }
 
-  getJogadores() {
-    // this.dataSubscription = this.placarService.getJogadores().subscribe((data: Jogador) => {
-    //   console.log(data)
-    //   this.dataJogadores = Object.values(data).sort();
-    //   this.dataJogadores.sort((j1, j2) => j1.pontuacao - j2.pontuacao).reverse();
-    // });
-    this.placarService.getJogadores();
+  getJogadores() {  
+    this.placarService.getJogadores().then((data: Jogador) => {      
+      this.dataJogadores = Object.values(data).sort();
+      this.dataJogadores.sort((j1, j2) => j1.pontuacao - j2.pontuacao).reverse();      
+    });
   }
-
-  ngOnDestroy() {
-    // this.dataSubscription.unsubscribe();
-  }
-
 }

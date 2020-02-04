@@ -1,11 +1,13 @@
 <main>
- 
-  <div class="closeModal">
-    <ion-icon (click)="dismiss()" class="closeModalIcon" name="close"></ion-icon>
+  <div class="header">
+    <ion-icon class="settings" name="settings"></ion-icon>
+    <h1 class="title">Configurações</h1>
+    <div class="closeModal">
+      <ion-icon (click)="dismiss()" class="closeModalIcon" name="close"></ion-icon>
+    </div>
   </div>
   <div class="content">
- 
-    <ion-item class="twoOptions">
+    <!-- <ion-item class="twoOptions">
       <ion-label>Limitações</ion-label>
       <ion-select multiple="true" (ionChange)="onChange($event)">
         <ion-select-option [selected]="optionOne" [value]="firstOption" >limite de tempo</ion-select-option>
@@ -19,12 +21,45 @@
     <ion-item *ngIf="pontosLimite" class="pontosOption" [ngClass]="{'pulse': erro}">
       <ion-label>Qual será a pontuação limite?</ion-label>
       <ion-datetime (ionChange)="getPontos($event)" color="danger" displayFormat="mm"></ion-datetime>
-    </ion-item>
+    </ion-item> -->
+    <div class="margin">
+      <ion-row>
+        <ion-col>
+          <h2 class="timeLimit">Limite de tempo?</h2>
+        </ion-col>
+        <ion-col>
+          <ion-toggle (click)="onChangeMinutos($event)" [checked]="tempoLimite"  class="toggle" color="danger"></ion-toggle>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <h2 class="timeLimit">Limite de gols?</h2>
+        </ion-col>
+        <ion-col>
+          <ion-toggle (click)="onChangePontos($event)" [checked]="pontosLimite" class="toggle" color="primary"></ion-toggle>
+        </ion-col>
+      </ion-row>
+
+      <ion-item>
+        <ion-range (ionChange)="getMinutos($event)" min="0" max="20" color="danger" pin="true"
+          [disabled]="minutosLimiteRange">
+          <ion-label slot="start">0</ion-label>
+          <ion-label slot="end">20</ion-label>
+        </ion-range>
+      </ion-item>
+      <ion-item>
+        <ion-range (ionChange)="getPontos($event)" min="0" max="20" color="secondary" pin="true"
+          [disabled]="pontosLimiteRange">
+          <ion-label slot="start">0</ion-label>
+          <ion-label slot="end">20</ion-label>
+        </ion-range>
+      </ion-item>
+
+    </div>
   </div>
   <div class="btns">
-    <ion-button class="salvarBtn" (click)="salvar()"  color="primary" size="small">Salvar alterações</ion-button>
-    <ion-button class="sairBtn" (click)="sair()" color="danger" size="small">Sair</ion-button>
-    
+    <ion-button class="salvarBtn" (click)="salvar()" color="primary" size="small">Salvar alterações</ion-button>
+    <ion-button class="sairBtn" (click)="sair()" color="danger" size="small">Voltar ao menu</ion-button>
   </div>
- 
+
 </main>

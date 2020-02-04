@@ -9,11 +9,12 @@ import { ModalController } from '@ionic/angular';
 })
 export class PlacarModalContentComponent implements OnInit {
   firstOption: string = 'limite de tempo';
-  secondOption: string = 'limte de pontos';
+  secondOption: string = 'limite de pontos';
   tempoLimite: boolean = false;
   pontosLimite: boolean = false;
   date: Date;
   pontuacao: number;
+  erro: boolean = false;
   constructor(
     private router: Router,
     private modalCtrl: ModalController
@@ -41,9 +42,12 @@ export class PlacarModalContentComponent implements OnInit {
     }else if($event.detail.value[0] == this.firstOption){
       this.tempoLimite = true;
       this.pontosLimite = false;
-    }else{
+    }else if($event.detail.value[0] == this.secondOption){
       this.tempoLimite = false;
       this.pontosLimite = true;
+    }else{
+      this.tempoLimite = false;
+      this.pontosLimite = false;
     }
   }
 
@@ -68,12 +72,19 @@ export class PlacarModalContentComponent implements OnInit {
         'pontos': this.pontuacao,
         'infinity': true
       });
-    }else {
+    }else if(this.date){
       this.modalCtrl.dismiss({
         'minutos': this.date.getMinutes(),
         'infinity': false
       });
+    }else{
+      this.modalCtrl.dismiss({
+        'pontos': 99,
+        'infinity': true
+      });
     }
+
+   
    
   }
 }

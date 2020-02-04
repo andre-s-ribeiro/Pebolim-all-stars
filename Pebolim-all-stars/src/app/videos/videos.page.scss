@@ -2,3 +2,19 @@ ion-content {
     padding-left: 1rem;
     padding-right: 1rem;
 }
+
+.margin {
+    margin-top: 4rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    h2 {
+        font-size: 1.6rem;
+    }
+}
+
+ion-icon {
+    font-size: 16rem;
+    display: block;
+    width: 50%;
+    margin: auto;
+}

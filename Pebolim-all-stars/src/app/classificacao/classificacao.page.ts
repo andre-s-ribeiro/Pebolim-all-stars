@@ -15,7 +15,7 @@ export class ClassificacaoPage implements OnInit, OnDestroy {
   dataTimes: Times[];
   dataJogadores: Jogador[];
   refresher: boolean;
-  dataSubscription: Subscription;
+  // dataSubscription: Subscription;
   lista: String = 'times';
   opcao: String = 'Times';
   color: String = 'primary'
@@ -40,22 +40,20 @@ export class ClassificacaoPage implements OnInit, OnDestroy {
   }
 
   getTimes() {
-    this.dataSubscription = this.placarService.getTimes().subscribe((data: Times) => {
-      this.dataTimes = Object.values(data).sort();
-      this.dataTimes.sort((t1, t2) => t1.pontuacao - t2.pontuacao).reverse();
-    });
+    this.placarService.getTimes();
   }
 
   getJogadores() {
-    this.dataSubscription = this.placarService.getJogadores().subscribe((data: Jogador) => {
-      console.log(data)
-      this.dataJogadores = Object.values(data).sort();
-      this.dataJogadores.sort((j1, j2) => j1.pontuacao - j2.pontuacao).reverse();
-    });
+    // this.dataSubscription = this.placarService.getJogadores().subscribe((data: Jogador) => {
+    //   console.log(data)
+    //   this.dataJogadores = Object.values(data).sort();
+    //   this.dataJogadores.sort((j1, j2) => j1.pontuacao - j2.pontuacao).reverse();
+    // });
+    this.placarService.getJogadores();
   }
 
   ngOnDestroy() {
-    this.dataSubscription.unsubscribe();
+    // this.dataSubscription.unsubscribe();
   }
 
 }

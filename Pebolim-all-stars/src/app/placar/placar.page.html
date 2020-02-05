@@ -23,7 +23,7 @@
     <img *ngIf="redPts >= pontosLimite  || redPts > bluePts && countdownStart <= 0" class="redWon"
       src="../../assets/win.gif" alt="">
     <div class="configDiv">
-      <ion-fab *ngIf="!isPlaying" class="fab-btn-play " slot="fixed">
+      <ion-fab *ngIf="!isPlaying && !blueWon && !draw && !redWon" class="fab-btn-play " slot="fixed">
         <ion-fab-button (click)="play()" color="light" size="small">
           <ion-icon class="options" name="md-arrow-dropright-circle"></ion-icon>
         </ion-fab-button>

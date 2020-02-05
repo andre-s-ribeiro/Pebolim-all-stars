@@ -10,9 +10,11 @@ import { ModalController } from '@ionic/angular';
 export class PlacarModalContentComponent implements OnInit {
   firstOption: string = 'limite de tempo';
   secondOption: string = 'limite de pontos';
-  tempoLimite: boolean = false;
-  pontosLimite: boolean = false;
-  date: Date;
+  pontosLimite: boolean = true;
+  pontosLimiteRange: boolean = false;
+  tempoLimite: boolean = true;
+  minutos: number;
+  minutosLimiteRange: boolean = false;
   pontuacao: number;
   erro: boolean = false;
   constructor(
@@ -35,35 +37,25 @@ export class PlacarModalContentComponent implements OnInit {
     });
   }
 
-  onChange($event){
-    if($event.detail.value[1]){
-      this.tempoLimite = true;
-      this.pontosLimite = true;
-    }else if($event.detail.value[0] == this.firstOption){
-      this.tempoLimite = true;
-      this.pontosLimite = false;
-    }else if($event.detail.value[0] == this.secondOption){
-      this.tempoLimite = false;
-      this.pontosLimite = true;
-    }else{
-      this.tempoLimite = false;
-      this.pontosLimite = false;
-    }
+  onChangePontos($event){
+    this.pontosLimiteRange = !$event.target.checked ? false : true; 
+  }
+  onChangeMinutos($event){
+    this.minutosLimiteRange = !$event.target.checked ? false : true;
   }
 
   getMinutos($event){
-    this.date = new Date($event.detail.value);
+    this.minutos = $event.detail.value;
   }
 
   getPontos($event){
-    let date = new Date($event.detail.value);
-    this.pontuacao = date.getMinutes();
+    this.pontuacao = $event.detail.value
   }
 
   salvar(){
-    if(this.date && this.pontuacao){
+    if(this.minutos && this.pontuacao){
       this.modalCtrl.dismiss({
-        'minutos': this.date.getMinutes(),
+        'minutos': this.minutos,
         'pontos': this.pontuacao,
         'infinity': false
       });
@@ -72,9 +64,9 @@ export class PlacarModalContentComponent implements OnInit {
         'pontos': this.pontuacao,
         'infinity': true
       });
-    }else if(this.date){
+    }else if(this.minutos){
       this.modalCtrl.dismiss({
-        'minutos': this.date.getMinutes(),
+        'minutos': this.minutos,
         'infinity': false
       });
     }else{

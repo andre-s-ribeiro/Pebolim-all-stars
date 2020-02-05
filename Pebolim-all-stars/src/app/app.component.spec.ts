@@ -6,6 +6,7 @@ import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 
 import { AppComponent } from './app.component';
+import * as firebase from 'firebase'
 
 describe('AppComponent', () => {
 
@@ -16,6 +17,10 @@ describe('AppComponent', () => {
     splashScreenSpy = jasmine.createSpyObj('SplashScreen', ['hide']);
     platformReadySpy = Promise.resolve();
     platformSpy = jasmine.createSpyObj('Platform', { ready: platformReadySpy });
+    const firebaseStub = {
+      initializeApp: ({}),
+      analytics: ({})
+    }
 
     TestBed.configureTestingModule({
       declarations: [AppComponent],
@@ -24,6 +29,7 @@ describe('AppComponent', () => {
         { provide: StatusBar, useValue: statusBarSpy },
         { provide: SplashScreen, useValue: splashScreenSpy },
         { provide: Platform, useValue: platformSpy },
+        { provide: firebase, useValue: firebaseStub }
       ],
     }).compileComponents();
   }));
@@ -33,13 +39,15 @@ describe('AppComponent', () => {
     const app = fixture.debugElement.componentInstance;
     expect(app).toBeTruthy();
   });
-
-  it('should initialize the app', async () => {
+  
+  it('should initialize the app', async () => {    
     TestBed.createComponent(AppComponent);
     expect(platformSpy.ready).toHaveBeenCalled();
     await platformReadySpy;
     expect(statusBarSpy.styleDefault).toHaveBeenCalled();
     expect(splashScreenSpy.hide).toHaveBeenCalled();
+    expect(firebase.initializeApp).toHaveBeenCalled();
+    expect(firebase.analytics).toHaveBeenCalled();
   });
 
   // TODO: add more tests!

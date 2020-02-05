@@ -7,13 +7,16 @@ import { IonicModule } from '@ionic/angular';
 import { RegrasPageRoutingModule } from './regras-routing.module';
 
 import { RegrasPage } from './regras.page';
+import * as firebase from 'firebase';
+
+
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    RegrasPageRoutingModule
+    RegrasPageRoutingModule,
   ],
   declarations: [RegrasPage]
 })

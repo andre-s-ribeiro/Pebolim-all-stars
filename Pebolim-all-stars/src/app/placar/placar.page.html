@@ -2,7 +2,7 @@
   <div class='page'>
 
     <div class="timer" >
-      <div *ngIf="!blueWon && !redWon && !draw; else winCase">
+      <div *ngIf="!blueWon && !redWon && !draw;">
           <h1 class="time" *ngIf="!infinity; else infinito">{{ countdownStart | date:'mm:ss':'UTC'}}</h1>
       </div>
       <ng-template #infinito>

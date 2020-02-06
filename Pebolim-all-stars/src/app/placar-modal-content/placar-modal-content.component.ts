@@ -12,6 +12,8 @@ export class PlacarModalContentComponent implements OnInit {
   secondOption: string = 'limite de pontos';
   pontosLimite: boolean = true;
   pontosLimiteRange: boolean = false;
+  opcaoTempo: boolean;
+  opcaoGols:boolean;
   tempoLimite: boolean = true;
   minutos: number;
   minutosLimiteRange: boolean = false;
@@ -38,9 +40,11 @@ export class PlacarModalContentComponent implements OnInit {
   }
 
   onChangePontos($event){
+    this.opcaoGols = !$event.target.checked;
     this.pontosLimiteRange = !$event.target.checked ? false : true; 
   }
   onChangeMinutos($event){
+    this.opcaoTempo = !$event.target.checked;
     this.minutosLimiteRange = !$event.target.checked ? false : true;
   }
 
@@ -53,18 +57,18 @@ export class PlacarModalContentComponent implements OnInit {
   }
 
   salvar(){
-    if(this.minutos && this.pontuacao){
+    if(this.minutos && this.pontuacao && this.opcaoTempo && this.opcaoGols){
       this.modalCtrl.dismiss({
         'minutos': this.minutos,
         'pontos': this.pontuacao,
         'infinity': false
       });
-    }else if(this.pontuacao){
+    }else if(this.pontuacao && this.opcaoGols){
       this.modalCtrl.dismiss({
         'pontos': this.pontuacao,
         'infinity': true
       });
-    }else if(this.minutos){
+    }else if(this.minutos && this.opcaoTempo){
       this.modalCtrl.dismiss({
         'minutos': this.minutos,
         'infinity': false

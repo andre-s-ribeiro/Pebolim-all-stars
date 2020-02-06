@@ -12,8 +12,8 @@ export class PlacarModalContentComponent implements OnInit {
   secondOption: string = 'limite de pontos';
   pontosLimite: boolean = true;
   pontosLimiteRange: boolean = false;
-  opcaoTempo: boolean;
-  opcaoGols:boolean;
+  opcaoTempo: boolean = true;
+  opcaoGols: boolean = true;
   tempoLimite: boolean = true;
   minutos: number;
   minutosLimiteRange: boolean = false;
@@ -35,52 +35,54 @@ export class PlacarModalContentComponent implements OnInit {
 
   dismiss() {
     this.modalCtrl.dismiss({
-      'dismissed': true
+      'minutos': this.minutos,
+      'pontos': this.pontuacao,
+      'infinity': false
     });
   }
 
-  onChangePontos($event){
+  onChangePontos($event) {
     this.opcaoGols = !$event.target.checked;
-    this.pontosLimiteRange = !$event.target.checked ? false : true; 
+    this.pontosLimiteRange = !$event.target.checked ? false : true;
   }
-  onChangeMinutos($event){
+  onChangeMinutos($event) {
     this.opcaoTempo = !$event.target.checked;
     this.minutosLimiteRange = !$event.target.checked ? false : true;
   }
 
-  getMinutos($event){
+  getMinutos($event) {
     this.minutos = $event.detail.value;
   }
 
-  getPontos($event){
+  getPontos($event) {
     this.pontuacao = $event.detail.value
   }
 
-  salvar(){
-    if(this.minutos && this.pontuacao && this.opcaoTempo && this.opcaoGols){
+  salvar() {
+    if (this.minutos && this.pontuacao && this.opcaoTempo && this.opcaoGols) {
       this.modalCtrl.dismiss({
         'minutos': this.minutos,
         'pontos': this.pontuacao,
         'infinity': false
       });
-    }else if(this.pontuacao && this.opcaoGols){
+    } else if (this.pontuacao && this.opcaoGols) {
       this.modalCtrl.dismiss({
         'pontos': this.pontuacao,
         'infinity': true
       });
-    }else if(this.minutos && this.opcaoTempo){
+    } else if (this.minutos && this.opcaoTempo) {
       this.modalCtrl.dismiss({
         'minutos': this.minutos,
         'infinity': false
       });
-    }else{
+    } else {
       this.modalCtrl.dismiss({
         'pontos': 99,
         'infinity': true
       });
     }
 
-   
-   
+
+
   }
 }

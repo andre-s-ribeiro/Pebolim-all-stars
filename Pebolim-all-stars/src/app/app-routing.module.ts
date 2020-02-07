@@ -24,6 +24,10 @@ const routes: Routes = [
   {
     path: 'videos',
     loadChildren: () => import('./videos/videos.module').then( m => m.VideosPageModule)
+  },
+  {
+    path: 'chave-de-grupos',
+    loadChildren: () => import('./chave-de-grupos/chave-de-grupos.module').then( m => m.ChaveDeGruposPageModule)
   }
 
 

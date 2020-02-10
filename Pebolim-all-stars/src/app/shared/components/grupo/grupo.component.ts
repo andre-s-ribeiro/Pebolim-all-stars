@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { Times } from '../../model/times.model';
 
 @Component({
   selector: 'grupo',
@@ -6,12 +7,11 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./grupo.component.scss'],
 })
 export class GrupoComponent implements OnInit {
-  @Input() foto: string;
-  @Input() grupo: string;
-  @Input() nome: string;
+ @Input() times: Times[];
+ @Input() grupo: number;
 
   constructor() { }
 
-  ngOnInit() {}
+  ngOnInit() { }
 
 }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ChaveGruposService } from '../shared/services/chave-grupos.service';
 import { Grupos } from '../shared/model/grupos.model';
+import { Times } from '../shared/model/times.model';
 
 
 @Component({
@@ -22,9 +23,9 @@ export class ChaveDeGruposPage implements OnInit {
 
 
   getGrupos() {
-  //  this.chaveGrupoService.getGrupos().then((data: Grupos[])=>{
-  //     this.grupos = data
-  //     console.log(data[0])
-  //  })
+   this.chaveGrupoService.getGrupos().then((grupos: Grupos[])=>{
+      this.grupos = grupos
+
+   })
   }
 }

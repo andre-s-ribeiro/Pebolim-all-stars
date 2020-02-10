@@ -28,5 +28,8 @@ export class TelaInicioPage implements OnInit {
   goToVideos(){
     this.router.navigate(['videos'])
   }
+  goToChaveGrupos(){
+    this.router.navigate(['chave-de-grupos'])
+  }
   
 }

@@ -1,0 +1,30 @@
+img {
+  width: 10%;
+  height: 10%;
+  border-radius: 40px;
+  float: left;
+}
+.main {
+  h2 {
+    margin-left: 1rem;
+  }
+}
+
+.content {
+  border-style: solid;
+  border-width: 0.5px;
+  border-image: linear-gradient(to left, blue, rgba(0, 0, 0, 0) 1 100%, rgb(0, 0, 0) 1 100%, rgba(0, 0, 0, 0) 100%) 100%
+    0 100% 0/3px 0 0px 0 stretch;
+}
+
+.time {
+  margin: 1rem;
+  padding-left: 0.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.151);
+  p {
+    padding-left: 6rem;
+    padding-top: 0.6rem;
+    margin: 9px;
+  }
+}

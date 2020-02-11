@@ -34,7 +34,7 @@ export class PlacarPage implements OnInit, OnDestroy {
     this.checarLimitacoes();
     this.redPts = 0;
     this.bluePts = 0;
-    
+    console.log(this.pontosLimite)
   }
   play() {
     this.isPlaying = true;
@@ -64,7 +64,9 @@ export class PlacarPage implements OnInit, OnDestroy {
   refresh() {
     this.checarLimitacoes();
     this.isPlaying = false;
-    this.countDownSubscription.unsubscribe();
+    if(this.countDownSubscription){
+      this.countDownSubscription.unsubscribe();
+    }
     this.redPts = 0;
     this.bluePts = 0;
     this.draw = false;
@@ -119,6 +121,7 @@ export class PlacarPage implements OnInit, OnDestroy {
         this.infinity = data.data['infinity'];  
         if (this.tempoLimite || this.pontosLimite) {
           this.ngOnInit();
+          this.refresh();
         }
       });
 
@@ -130,7 +133,11 @@ export class PlacarPage implements OnInit, OnDestroy {
     if (this.tempoLimite) {
       this.countdownStart = this.tempoLimite * 60000;
     } else {
-      this.countdownStart = 3 * 60000;
+      this.infinity = true;
+    }
+
+    if(!this.pontosLimite){
+      this.pontosLimite = 99;
     }
   }
 

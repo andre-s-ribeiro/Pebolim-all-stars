@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ModalController } from '@ionic/angular';
+import { element } from 'protractor';
 
 @Component({
   selector: 'app-placar-modal-content',
@@ -19,6 +20,7 @@ export class PlacarModalContentComponent implements OnInit {
   minutosLimiteRange: boolean = false;
   pontuacao: number;
   erro: boolean = false;
+  array: any[] = []
   constructor(
     private router: Router,
     private modalCtrl: ModalController
@@ -30,7 +32,7 @@ export class PlacarModalContentComponent implements OnInit {
 
   sair() {
     this.router.navigate(['tela-inicio']);
-    this.dismiss();
+    this.salvar();
   }
 
   dismiss() {
@@ -81,8 +83,5 @@ export class PlacarModalContentComponent implements OnInit {
         'infinity': true
       });
     }
-
-
-
   }
 }

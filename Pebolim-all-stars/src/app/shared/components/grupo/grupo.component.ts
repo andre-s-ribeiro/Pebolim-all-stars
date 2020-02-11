@@ -9,9 +9,12 @@ import { Times } from '../../model/times.model';
 export class GrupoComponent implements OnInit {
  @Input() times: Times[];
  @Input() grupo: number;
+ name: string;
 
   constructor() { }
 
-  ngOnInit() { }
+  ngOnInit() { 
+    this.name = String.fromCharCode(65 + this.grupo)
+  }
 
 }

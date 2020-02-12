@@ -4,9 +4,7 @@
   <h1>Chave de grupos</h1>
 </div>
 <ion-content>
-  <!-- <div *ngFor="let time of grupos">
-      <grupo [nome]="time.nome" [grupo]="time.grupo" [foto]="time.foto" ></grupo>
-  </div> -->
-  
-
+  <div *ngFor="let object of grupos; index as i">
+    <grupo [grupo]="i" [times]="object.times"></grupo>
+  </div>
 </ion-content>

@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ModalController } from '@ionic/angular';
 
+import { ScreenOrientation } from '@ionic-native/screen-orientation/ngx';
+
 @Component({
   selector: 'app-placar-modal-content',
   templateUrl: './placar-modal-content.component.html',
@@ -21,11 +23,12 @@ export class PlacarModalContentComponent implements OnInit {
   erro: boolean = false;
   constructor(
     private router: Router,
-    private modalCtrl: ModalController
+    private modalCtrl: ModalController,
+    private screenOrientation: ScreenOrientation
   ) { }
 
   ngOnInit() {
-
+    this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT);
   }
 
   sair() {

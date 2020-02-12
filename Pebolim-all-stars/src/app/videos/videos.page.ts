@@ -25,4 +25,11 @@ export class VideosPage implements OnInit {
       });      
     });    
   }
+
+  doRefresh($event){
+    this.ngOnInit();
+    setTimeout(() => {      
+      $event.target.complete();
+    }, 500);
+  }
 }

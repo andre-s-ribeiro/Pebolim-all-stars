@@ -4,9 +4,7 @@ import { map, filter } from 'rxjs/operators';
 import { ModalController } from '@ionic/angular';
 import { PlacarModalContentComponent } from '../placar-modal-content/placar-modal-content.component';
 
-
-
-
+import { ScreenOrientation } from '@ionic-native/screen-orientation/ngx';
 
 @Component({
   selector: 'app-placar',
@@ -27,14 +25,15 @@ export class PlacarPage implements OnInit, OnDestroy {
   blueWon: boolean = false;
   draw: boolean = false;
   constructor(
-    public modalController: ModalController
+    public modalController: ModalController,
+    private screenOrientation: ScreenOrientation
   ) { }
   
   ngOnInit() {
     this.checarLimitacoes();
     this.redPts = 0;
     this.bluePts = 0;
-    
+    this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.LANDSCAPE);
   }
   play() {
     this.isPlaying = true;

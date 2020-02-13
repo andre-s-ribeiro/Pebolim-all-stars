@@ -132,10 +132,14 @@ export class PlacarPage implements OnInit, OnDestroy {
   }
 
   checarLimitacoes() {
-    if (this.tempoLimite) {
+    if (this.tempoLimite && !this.infinity) {
       this.countdownStart = this.tempoLimite * 60000;
-    } else {
+    } 
+    if(!this.tempoLimite && !this.infinity) {
       this.countdownStart = 3 * 60000
+    }
+    if(this.infinity){
+      this.countdownStart = 99999 * 60000;
     }
 
     if(!this.pontosLimite){

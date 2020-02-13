@@ -34,7 +34,6 @@ export class PlacarPage implements OnInit, OnDestroy {
     this.redPts = 0;
     this.bluePts = 0;
     this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.LANDSCAPE);
-    console.log(this.pontosLimite)
   }
   play() {
     this.isPlaying = true;
@@ -116,13 +115,16 @@ export class PlacarPage implements OnInit, OnDestroy {
     });
     modal.onDidDismiss()
       .then((data) => {
-        this.tempoLimite = data.data['minutos'];
-        this.pontosLimite = data.data['pontos'];  
-        this.infinity = data.data['infinity'];  
-        if (this.tempoLimite || this.pontosLimite) {
-          this.ngOnInit();
-          this.refresh();
+        if(data.data){
+          this.tempoLimite = data.data['minutos'];
+          this.pontosLimite = data.data['pontos'];  
+          this.infinity = data.data['infinity'];  
+          if (this.tempoLimite || this.pontosLimite) {
+            this.ngOnInit();
+            this.refresh();
+          }
         }
+        
       });
 
     return await modal.present();
@@ -133,11 +135,11 @@ export class PlacarPage implements OnInit, OnDestroy {
     if (this.tempoLimite) {
       this.countdownStart = this.tempoLimite * 60000;
     } else {
-      this.infinity = true;
+      this.countdownStart = 3 * 60000
     }
 
     if(!this.pontosLimite){
-      this.pontosLimite = 99;
+      this.pontosLimite = 3;
     }
   }
 

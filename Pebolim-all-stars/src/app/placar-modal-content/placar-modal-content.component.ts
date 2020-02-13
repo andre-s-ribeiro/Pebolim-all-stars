@@ -35,15 +35,11 @@ export class PlacarModalContentComponent implements OnInit {
 
   sair() {
     this.router.navigate(['tela-inicio']);
-    this.salvar();
+    this.modalCtrl.dismiss();
   }
 
   dismiss() {
-    this.modalCtrl.dismiss({
-      'minutos': this.minutos,
-      'pontos': this.pontuacao,
-      'infinity': false
-    });
+    this.modalCtrl.dismiss();
   }
 
   onChangePontos($event) {

@@ -51,6 +51,7 @@ export class PlacarPage implements OnInit, OnDestroy {
           this.isPlaying = false;
         }else{
           this.draw = true;
+          this.isPlaying = false;
         }
       }
     });
@@ -63,6 +64,7 @@ export class PlacarPage implements OnInit, OnDestroy {
   refresh() {
     this.checarLimitacoes();
     this.isPlaying = false;
+    this.whoIsWinning = '';
     if(this.countDownSubscription){
       this.countDownSubscription.unsubscribe();
     }
